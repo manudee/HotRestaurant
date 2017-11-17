@@ -2,6 +2,7 @@ var express = require("express");
 
 var app = express();
 var PORT = 3000;
+var path = require('path');
 
 app.listen(PORT,function(){
 	console.log("App listening on port "+ PORT);
@@ -91,8 +92,20 @@ console.log(reservations.length);
 // }
 
 app.get("/", function(req, res) {
-  res.send("Welcome to the restaurant Page!");
+  res.sendFile(path.join(__dirname, "home.html"));
 });
+
+
+app.get("/view", function(req, res) {
+  res.sendFile(path.join(__dirname, "view.html"));
+});
+
+
+app.get("/book", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+
 
 app.get("/api/reservations",function(req,res){
 	//console.log(reservations.length);

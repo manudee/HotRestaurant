@@ -69,8 +69,12 @@ var input = [{
 
 var reservations = [];
 var waitList = []
-
+check();
+function check(){
+	reservations = [];
+	waitList =[];
 for(var i = 0;i<input.length;i++){
+
 	if (reservations.length >= 5){
 		waitList.push(input[i])
 		//reservations.pop();
@@ -82,6 +86,7 @@ for(var i = 0;i<input.length;i++){
 		reservations.push(input[i]);
 	}
 
+}
 }
 
 
@@ -139,6 +144,6 @@ app.post("/api/new", function(req, res) {
   console.log(newcharacter);
 
   input.push(newcharacter);
-
+  check();
   res.json(newcharacter);
 });

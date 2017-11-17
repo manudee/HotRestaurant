@@ -26,25 +26,25 @@
         <form method="POST" role = "form">
         <label for="basic-url">Name</label>
           <div style="width:1100px" class="input-group">
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <input type="text" class="form-control" id="basic-name" aria-describedby="basic-addon3">
          </div>
          <br>
         <label for="basic-url">Phone Number</label>
           <div style="width:1100px" class="input-group">
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <input type="text" class="form-control" id="basic-number" aria-describedby="basic-addon3">
          </div>
          <br>
         <label for="basic-url">Email</label>
           <div style="width:1100px" class="input-group">
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <input type="text" class="form-control" id="basic-email" aria-describedby="basic-addon3">
           </div>
           <br>
         <label for="basic-url">Unique ID</label>
           <div style="width:1100px" class="input-group">
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <input type="text" class="form-control" id="basic-id" aria-describedby="basic-addon3">
           </div>
         <br>
-        <button type="button" class="btn btn-primary">Submit </button>
+        <button id='add-btn' type="button" class="btn btn-primary" >Submit </button>
         </form>
       </div>
     </div>
@@ -59,7 +59,24 @@
 
   <script type="text/javascript">
     
+  
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newCharacter = {
+        name: $("#basic-name").val().trim(),
+        Number: $("#basic-number").val().trim(),
+        email_ID: $("#basic-email").val().trim(),
+        unique_ID: $("#basic-id").val().trim()
+      };
 
+      // Question: What does this code do??
+      $.post("/api/new", newCharacter)
+      .done(function(data) {
+        console.log(data);
+        alert("Add Reservation...");
+      });
+    });
+  
   </script>
   </body> 
 

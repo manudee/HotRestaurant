@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/manudee/HotRestaurant/issues"
   },
-  "homepage": "https://github.com/manudee/HotRestaurant#readme"
+  "homepage": "https://github.com/manudee/HotRestaurant#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }

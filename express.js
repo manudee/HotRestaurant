@@ -8,7 +8,7 @@ app.listen(PORT,function(){
 })
 
 
-var reservations = [{
+var input = [{
 	routename:"guest1",
 	Name:"Guest1",
 	Number : "123456788",
@@ -30,9 +30,6 @@ routename:"guest3",
 	unique_ID : "Unique3"
 },
 {
-
-},
-{
 routename:"guest4",
 	Name:"Guest4",
 	Number : "123456788",
@@ -52,15 +49,62 @@ routename:"guest6",
 	Number : "123456788",
 	email_ID : "abc6@abc6.com",
 	unique_ID : "Unique6"
-}]
+},
+{
+	routename:"guest7",
+	Name:"Guest7",
+	Number : "123456788",
+	email_ID : "abc7@abc7.com",
+	unique_ID : "Unique7"
 
+}];
+
+var reservations = [];
+var waitList = []
+
+for(var i = 0;i<input.length;i++){
+	if (reservations.length >= 5){
+		waitList.push(input[i])
+		//reservations.pop();
+		//console.log(waitList);
+	}
+
+	else{
+		//this needs data when submit button is clicked.
+		reservations.push(input[i]);
+	}
+
+}
+
+
+console.log(reservations.length);
+
+// if (reservations.length >= 5){
+// 	waitList.push(reservations[5])
+// 	//reservations.pop();
+// 	//console.log(waitList);
+// }
+
+// else{
+// 	//this needs data when submit button is clicked.
+// 	reservations.push();
+// }
 
 app.get("/", function(req, res) {
   res.send("Welcome to the restaurant Page!");
 });
 
-// app.get("/api/:reservations?",function(req,res){
+app.get("/api/reservations",function(req,res){
+	//console.log(reservations.length);
+	// for (var i = 0; i < 5; i++) {
+        return res.json(reservations);
+        //console.log(reservations[i])
+      // }
+ })
 
-// 	var chosen = req.params.reservations;
-// 		console.log(chosen);
-// })
+app.get("/api/waitList",function(req,res){
+
+	//for (var i = 0; i < waitList.length; i++) {
+         return res.json(waitList);
+      //}
+ })
